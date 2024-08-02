@@ -4,36 +4,35 @@ import React from "react";
 import { Image, Text, View } from "react-native";
 import { Images } from "theme/images";
 import styles from "./styles";
-import { useAppNavigation } from "navigation/types";
-import { KeyboardAvoidingScrollView } from "react-native-keyboard-avoiding-scroll-view";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-const LoginScreen = () => {
+const SignupScreen = () => {
   const { colors } = useThemeContext();
-  const navigation = useAppNavigation();
 
   const themedStyles = styles(colors);
 
-  const onSignup = () => {
-    navigation.navigate("Signup");
-  };
-
   return (
     <KeyboardAwareScrollView
-      bounces={false}
       style={themedStyles.container}
+      bounces={false}
       contentContainerStyle={{ flexGrow: 1 }}
     >
-      <AppText text="Welcome back" overrideTextStyle={themedStyles.title} />
+      <AppText text="Create Account" overrideTextStyle={themedStyles.title} />
       <AppText
-        text="Enter your credential to continue"
+        text="Sign up to get started!"
         overrideTextStyle={themedStyles.subtitle}
       />
       <Input
         leftIcon={<Image source={Images.email} style={themedStyles.image} />}
-        placeholder="Email or username"
+        placeholder="Full Name"
         overrideContainerStyle={themedStyles.emailInput}
       />
+      <Input
+        leftIcon={<Image source={Images.lock} style={themedStyles.image} />}
+        placeholder="Email"
+        overrideContainerStyle={themedStyles.passwordInput}
+      />
+
       <Input
         leftIcon={<Image source={Images.lock} style={themedStyles.image} />}
         rightIcon={<Image source={Images.eye} style={themedStyles.image} />}
@@ -41,30 +40,29 @@ const LoginScreen = () => {
         overrideContainerStyle={themedStyles.passwordInput}
       />
 
-      <AppText
-        text="Forgot password?"
-        overrideTextStyle={themedStyles.forgotPassword}
+      <Input
+        leftIcon={<Image source={Images.lock} style={themedStyles.image} />}
+        rightIcon={<Image source={Images.eye} style={themedStyles.image} />}
+        placeholder="Confirm Password"
+        overrideContainerStyle={themedStyles.passwordInput}
       />
+
       <Button
-        title="Log in"
+        title="Sign up"
         onPress={() => {}}
-        overrideContainerStyle={themedStyles.loginButton}
+        overrideContainerStyle={themedStyles.signupButton}
       />
       <View style={themedStyles.bottomContainer}>
         <Text>
           <AppText
             overrideTextStyle={themedStyles.noAccount}
-            text="Don't have an account? "
+            text="Already a member? "
           />
-          <AppText
-            onPress={onSignup}
-            text="Signup"
-            overrideTextStyle={themedStyles.signup}
-          />
+          <AppText text="Log in" overrideTextStyle={themedStyles.signup} />
         </Text>
       </View>
     </KeyboardAwareScrollView>
   );
 };
 
-export default LoginScreen;
+export default SignupScreen;

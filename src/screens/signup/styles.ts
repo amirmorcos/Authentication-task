@@ -19,12 +19,7 @@ export default (colors: AppColors) =>
       marginTop: verticalScale(15),
       color: colors.MED_GREEN,
     },
-    forgotPassword: {
-      color: colors.DARK_GREEN,
-      textAlign: "right",
-      marginTop: verticalScale(15),
-      ...Typography.caption,
-    },
+
     bottomContainer: {
       marginBottom: verticalScale(30),
       flex: 1,
@@ -48,8 +43,8 @@ export default (colors: AppColors) =>
     passwordInput: {
       marginTop: verticalScale(20),
     },
-    loginButton: {
-      marginTop: verticalScale(20),
+    signupButton: {
+      marginTop: verticalScale(30),
     },
     image: {
       height: scale(20),
