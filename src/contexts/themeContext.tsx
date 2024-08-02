@@ -10,7 +10,7 @@ const ThemeContext = createContext<ThemeProps | null>(null);
 
 export const useThemeContext = () => useContext(ThemeContext) as ThemeProps;
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [colors, setColors] = useState(Colors);
 
   return (
@@ -19,3 +19,5 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     </ThemeContext.Provider>
   );
 };
+
+export default ThemeProvider;
