@@ -21,7 +21,7 @@ export const Typography = {
     fontSize: moderateScale(48),
   },
   subtitle: {
-    fontFamily: Fonts.regular,
+    fontFamily: Fonts.semiBold,
     fontSize: moderateScale(32),
   },
   heading: {
@@ -55,5 +55,9 @@ export const Typography = {
   bodySmallStrong: {
     fontFamily: Fonts.semiBold,
     fontSize: moderateScale(14),
+  },
+  caption: {
+    fontFamily: Fonts.regular,
+    fontSize: moderateScale(12),
   },
 };

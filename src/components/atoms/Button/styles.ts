@@ -14,6 +14,7 @@ export default (colors: AppColors) =>
       borderRadius: 100,
     },
     title: {
+      color: colors.BUTTON_TEXT,
       ...Typography.bodyStrong,
     },
   });
