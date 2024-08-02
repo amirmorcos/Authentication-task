@@ -7,8 +7,8 @@
 import "react-native-gesture-handler";
 
 import React from "react";
-import AppNavigation from "./src/navigation/appNavigation";
-import { ThemeProvider } from "./src/contexts/themeContext";
+import AppNavigation from "navigation/appNavigation";
+import ThemeProvider from "contexts/themeContext";
 
 const App = () => {
   return (
