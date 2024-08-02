@@ -4,10 +4,14 @@ import React from "react";
 import { Image, SafeAreaView, View } from "react-native";
 import { Images } from "theme/images";
 import styles from "./styles";
+import { useAppNavigation } from "navigation/types";
 
 const WelcomeScreen = () => {
   const { colors } = useThemeContext();
+  const navigate = useAppNavigation();
+
   const themedStyles = styles(colors);
+
   return (
     <SafeAreaView style={themedStyles.container}>
       <View style={themedStyles.content}>
@@ -32,10 +36,10 @@ const WelcomeScreen = () => {
         />
 
         <View style={themedStyles.buttonsContainer}>
-          <Button onPress={() => {}} title="Login" />
+          <Button onPress={() => navigate.navigate("Login")} title="Log in" />
           <Button
             onPress={() => {}}
-            title="Signup"
+            title="Sign up"
             overrideContainerStyle={themedStyles.signUp}
           />
         </View>
