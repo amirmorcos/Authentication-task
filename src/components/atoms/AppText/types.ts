@@ -1,6 +1,6 @@
-import { StyleProp, TextStyle } from "react-native";
+import { StyleProp, TextProps, TextStyle } from "react-native";
 
-export type AppTextProps = {
+export type AppTextProps = TextProps & {
   text: string;
   overrideTextStyle?: StyleProp<TextStyle>;
 };
