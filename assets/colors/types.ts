@@ -7,4 +7,6 @@ export type AppColors = {
   BLACK: string;
   DARK_YELLOW: string;
   BUTTON_TEXT: string;
+  GREY: string;
+  RED: string;
 };

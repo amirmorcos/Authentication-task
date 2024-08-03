@@ -1,21 +1,45 @@
-import { AppText, Button, Input } from "atoms/index";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { AppText, Button } from "atoms/index";
+import { useAuthContext } from "contexts/authContext";
 import { useThemeContext } from "contexts/themeContext";
-import React from "react";
-import { Image, Text, View } from "react-native";
+import InputController from "molecules/InputController";
+import { useAppNavigation } from "navigation/types";
+import React, { useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Images } from "theme/images";
 import styles from "./styles";
-import { useAppNavigation } from "navigation/types";
-import { KeyboardAvoidingScrollView } from "react-native-keyboard-avoiding-scroll-view";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { loginForm, loginSchema } from "./types";
 
 const LoginScreen = () => {
   const { colors } = useThemeContext();
   const navigation = useAppNavigation();
+  const { onSignin } = useAuthContext();
+  const methods = useForm<loginForm>({
+    resolver: yupResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+  const [isPasswordSecure, setIsPasswordSecure] = useState(true);
+  const [buttonLoading, setButtonLoading] = useState(false);
 
   const themedStyles = styles(colors);
 
   const onSignup = () => {
     navigation.navigate("Signup");
+  };
+
+  const onLogin = async (data: loginForm) => {
+    try {
+      setButtonLoading(true);
+      await onSignin(data.email, data.password);
+    } catch (e) {
+    } finally {
+      setButtonLoading(false);
+    }
   };
 
   return (
@@ -29,17 +53,28 @@ const LoginScreen = () => {
         text="Enter your credential to continue"
         overrideTextStyle={themedStyles.subtitle}
       />
-      <Input
-        leftIcon={<Image source={Images.email} style={themedStyles.image} />}
-        placeholder="Email or username"
-        overrideContainerStyle={themedStyles.emailInput}
-      />
-      <Input
-        leftIcon={<Image source={Images.lock} style={themedStyles.image} />}
-        rightIcon={<Image source={Images.eye} style={themedStyles.image} />}
-        placeholder="Password"
-        overrideContainerStyle={themedStyles.passwordInput}
-      />
+      <FormProvider {...methods}>
+        <InputController
+          name="email"
+          leftIcon={<Image source={Images.email} style={themedStyles.image} />}
+          placeholder="Email or username"
+          overrideContainerStyle={themedStyles.emailInput}
+        />
+        <InputController
+          name="password"
+          secureTextEntry={isPasswordSecure}
+          leftIcon={<Image source={Images.lock} style={themedStyles.image} />}
+          rightIcon={
+            <TouchableOpacity
+              onPress={() => setIsPasswordSecure(!isPasswordSecure)}
+            >
+              <Image source={Images.eye} style={themedStyles.image} />
+            </TouchableOpacity>
+          }
+          placeholder="Password"
+          overrideContainerStyle={themedStyles.passwordInput}
+        />
+      </FormProvider>
 
       <AppText
         text="Forgot password?"
@@ -47,7 +82,8 @@ const LoginScreen = () => {
       />
       <Button
         title="Log in"
-        onPress={() => {}}
+        onPress={methods.handleSubmit(onLogin)}
+        isLoading={buttonLoading}
         overrideContainerStyle={themedStyles.loginButton}
       />
       <View style={themedStyles.bottomContainer}>

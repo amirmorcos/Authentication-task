@@ -17,4 +17,10 @@ export default (colors: AppColors) =>
       color: colors.BUTTON_TEXT,
       ...Typography.bodyStrong,
     },
+    disabled: {
+      backgroundColor: colors.GREY,
+    },
+    disabledText: {
+      color: colors.WHITE,
+    },
   });

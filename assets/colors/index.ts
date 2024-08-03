@@ -9,6 +9,8 @@ const Colors: AppColors = {
   WHITE: "#FFFFFF",
   BLACK: "#000000",
   BUTTON_TEXT: "#10405A",
+  GREY: "#999999",
+  RED: "#ff0000",
 };
 
 export default Colors;

@@ -20,6 +20,7 @@ const Input = ({
         {leftIcon}
         <TextInput
           {...props}
+          autoCapitalize="none"
           placeholderTextColor={colors.MED_GREEN}
           style={themedStyles.input}
         />

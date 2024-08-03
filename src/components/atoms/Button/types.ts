@@ -4,4 +4,6 @@ export type ButtonProps = {
   onPress: () => void;
   title: string;
   overrideContainerStyle?: StyleProp<ViewStyle>;
+  disabled?: boolean;
+  isLoading?: boolean;
 };

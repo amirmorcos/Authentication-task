@@ -38,7 +38,7 @@ const WelcomeScreen = () => {
         <View style={themedStyles.buttonsContainer}>
           <Button onPress={() => navigate.navigate("Login")} title="Log in" />
           <Button
-            onPress={() => {}}
+            onPress={() => navigate.navigate("Signup")}
             title="Sign up"
             overrideContainerStyle={themedStyles.signUp}
           />
