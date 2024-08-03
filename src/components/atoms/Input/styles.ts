@@ -25,5 +25,6 @@ export default (colors: AppColors) =>
       marginStart: scale(10),
       ...Typography.bodyBase,
       color: colors.DARK_GREEN,
+      width: "100%",
     },
   });

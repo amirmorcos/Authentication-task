@@ -24,6 +24,7 @@ export default (colors: AppColors) =>
       marginBottom: verticalScale(30),
       flex: 1,
       justifyContent: "flex-end",
+      alignItems: "center",
     },
     noAccount: {
       textAlign: "center",

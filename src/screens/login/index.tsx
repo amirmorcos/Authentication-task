@@ -57,7 +57,7 @@ const LoginScreen = () => {
         <InputController
           name="email"
           leftIcon={<Image source={Images.email} style={themedStyles.image} />}
-          placeholder="Email or username"
+          placeholder="Email"
           overrideContainerStyle={themedStyles.emailInput}
         />
         <InputController
